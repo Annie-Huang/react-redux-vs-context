@@ -1,8 +1,7 @@
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 
-const addProductToCart = product => {
-    console.log('Adding product', product);
+const addProductToCart = (product, cart) => {
     const updatedCart = [...cart];
     const updatedItemIndex = updatedCart.findIndex(
         item => item.id === product.id
@@ -17,9 +16,10 @@ const addProductToCart = product => {
         updatedItem.quantity++;
         updatedCart[updatedItemIndex] = updatedItem;
     }
-    setTimeout(() => {
-        setCart(updatedCart);
-    }, 700);
+    // setTimeout(() => {
+    //     setCart(updatedCart);
+    // }, 700);
+    return { cart: updatedCart };
 };
 
 const removeProductFromCart = productId => {
@@ -46,7 +46,7 @@ const removeProductFromCart = productId => {
 export const shopReducer = (state, action) => {
     switch (action.type) {
         case ADD_PRODUCT:
-            return;
+            return addProductToCart(action.product, state.cart);
         case REMOVE_PRODUCT:
             return;
         default:
