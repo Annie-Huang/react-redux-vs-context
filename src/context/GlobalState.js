@@ -11,11 +11,11 @@ const GlobalState = props => {
     { id: 'p4', title: 'Half-dried plant', price: 2.99 }
   ];
 
-  const [carts, setCarts] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  addProductToCart = product => {
+  const addProductToCart = product => {
     console.log('Adding product', product);
-    const updatedCart = [...this.state.cart];
+    const updatedCart = [...cart];
     const updatedItemIndex = updatedCart.findIndex(
       item => item.id === product.id
     );
@@ -30,11 +30,11 @@ const GlobalState = props => {
       updatedCart[updatedItemIndex] = updatedItem;
     }
     setTimeout(() => {
-      this.setState({ cart: updatedCart });
+      setCart(updatedCart);
     }, 700);
   };
 
-  removeProductFromCart = productId => {
+  const removeProductFromCart = productId => {
     console.log('Removing product with id: ' + productId);
     const updatedCart = [...this.state.cart];
     const updatedItemIndex = updatedCart.findIndex(
