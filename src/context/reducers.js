@@ -22,9 +22,9 @@ const addProductToCart = (product, state) => {
     return { ...state, cart: updatedCart };
 };
 
-const removeProductFromCart = productId => {
+const removeProductFromCart = (productId, state) => {
     console.log('Removing product with id: ' + productId);
-    const updatedCart = [...cart];
+    const updatedCart = [...state.cart];
     const updatedItemIndex = updatedCart.findIndex(
         item => item.id === productId
     );
@@ -38,9 +38,10 @@ const removeProductFromCart = productId => {
     } else {
         updatedCart[updatedItemIndex] = updatedItem;
     }
-    setTimeout(() => {
-        setCart(updatedCart);
-    }, 700);
+    // setTimeout(() => {
+    //     setCart(updatedCart);
+    // }, 700);
+    return {...state, cart: updatedCart};
 };
 
 export const shopReducer = (state, action) => {
@@ -48,7 +49,7 @@ export const shopReducer = (state, action) => {
         case ADD_PRODUCT:
             return addProductToCart(action.product, state);
         case REMOVE_PRODUCT:
-            return;
+            return removeProductFromCart(action.productId, state);
         default:
             return state;
     }
