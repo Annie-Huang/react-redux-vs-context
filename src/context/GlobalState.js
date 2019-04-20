@@ -4,12 +4,12 @@ import ShopContext from './shop-context';
 
 const GlobalState = props => {
 
-  const [products, setProducts] = useState([
+  const products = [
     { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
     { id: 'p2', title: 'Harry Potter 3', price: 9.99 },
     { id: 'p3', title: 'Used plastic bottle', price: 0.99 },
     { id: 'p4', title: 'Half-dried plant', price: 2.99 }
-  ]);
+  ];
 
   const [carts, setCarts] = useState([]);
 
@@ -55,20 +55,18 @@ const GlobalState = props => {
     }, 700);
   };
 
-  render() {
-    return (
-      <ShopContext.Provider
-        value={{
-          products: this.state.products,
-          cart: this.state.cart,
-          addProductToCart: this.addProductToCart,
-          removeProductFromCart: this.removeProductFromCart
-        }}
-      >
-        {this.props.children}
-      </ShopContext.Provider>
-    );
-  }
-}
+  return (
+    <ShopContext.Provider
+      value={{
+        products: this.state.products,
+        cart: this.state.cart,
+        addProductToCart: this.addProductToCart,
+        removeProductFromCart: this.removeProductFromCart
+      }}
+    >
+      {this.props.children}
+    </ShopContext.Provider>
+  );
+};
 
 export default GlobalState;
