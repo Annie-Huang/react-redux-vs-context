@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 
 import ShopContext from './shop-context';
+import {ADD_PRODUCT, REMOVE_PRODUCT, shopReducer} from "./reducers";
 
 const GlobalState = props => {
 
@@ -12,6 +13,21 @@ const GlobalState = props => {
   ];
 
   const [cart, setCart] = useState([]);
+  const [cartState, dispatch] = useReducer(shopReducer);
+
+  const addProductToCart = product => {
+    setTimeout(() => {
+      // setCart(updatedCart);
+      dispatch({type: ADD_PRODUCT, product: product})
+    }, 700);
+  };
+
+  const removeProductFromCart = productId => {
+    setTimeout(() => {
+      // setCart(updatedCart);
+      dispatch({type: REMOVE_PRODUCT, productId: productId});
+    }, 700);
+  };
 
   return (
     <ShopContext.Provider
