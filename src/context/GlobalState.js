@@ -58,13 +58,13 @@ const GlobalState = props => {
   return (
     <ShopContext.Provider
       value={{
-        products: this.state.products,
-        cart: this.state.cart,
-        addProductToCart: this.addProductToCart,
-        removeProductFromCart: this.removeProductFromCart
+        products: products,
+        cart: cart,
+        addProductToCart: addProductToCart,
+        removeProductFromCart: removeProductFromCart
       }}
     >
-      {this.props.children}
+      {props.children}
     </ShopContext.Provider>
   );
 };
