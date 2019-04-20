@@ -13,7 +13,7 @@ const GlobalState = props => {
   ];
 
   // const [cart, setCart] = useState([]);
-  const [cartState, dispatch] = useReducer(shopReducer);
+  const [cartState, dispatch] = useReducer(shopReducer, {cart: []});
 
   const addProductToCart = product => {
     setTimeout(() => {
