@@ -12,7 +12,7 @@ const GlobalState = props => {
     { id: 'p4', title: 'Half-dried plant', price: 2.99 }
   ];
 
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [cartState, dispatch] = useReducer(shopReducer);
 
   const addProductToCart = product => {
@@ -33,7 +33,7 @@ const GlobalState = props => {
     <ShopContext.Provider
       value={{
         products: products,
-        cart: cart,
+        cart: cartState.cart,
         addProductToCart: addProductToCart,
         removeProductFromCart: removeProductFromCart
       }}
