@@ -1,3 +1,6 @@
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+
 const addProductToCart = product => {
     console.log('Adding product', product);
     const updatedCart = [...cart];
@@ -38,4 +41,15 @@ const removeProductFromCart = productId => {
     setTimeout(() => {
         setCart(updatedCart);
     }, 700);
+};
+
+export const shopReducer = (state, action) => {
+    switch (action.type) {
+        case ADD_PRODUCT:
+            return;
+        case REMOVE_PRODUCT:
+            return;
+        default:
+            return state;
+    }
 };
