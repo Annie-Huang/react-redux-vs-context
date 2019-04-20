@@ -36,7 +36,7 @@ const GlobalState = props => {
 
   const removeProductFromCart = productId => {
     console.log('Removing product with id: ' + productId);
-    const updatedCart = [...this.state.cart];
+    const updatedCart = [...cart];
     const updatedItemIndex = updatedCart.findIndex(
       item => item.id === productId
     );
@@ -51,7 +51,7 @@ const GlobalState = props => {
       updatedCart[updatedItemIndex] = updatedItem;
     }
     setTimeout(() => {
-      this.setState({ cart: updatedCart });
+      setCart(updatedCart);
     }, 700);
   };
 
